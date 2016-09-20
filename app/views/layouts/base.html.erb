@@ -128,5 +128,12 @@
 </div>
 </div>
 <%= call_hook :view_layouts_base_body_bottom %>
+<% if User.current.logged? %>
+<script>
+if(heap.userId != '<%= User.current.login %>'){
+    heap.identify('<%= User.current.login %>');
+}
+</script>
+<% end %>
 </body>
 </html>
